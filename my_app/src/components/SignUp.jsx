@@ -25,11 +25,20 @@ const SignUp = () => {
     });
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(signUp(formData)).then((action) => {
+  //     if (action.meta.requestStatus === 'fulfilled') {
+  //       navigate('/');
+  //     }
+  //   });
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signUp(formData)).then((action) => {
-      if (action.meta.requestStatus === 'fulfilled') {
-        navigate('/signin');
+      if (action.meta.requestStatus === "fulfilled") {
+        navigate("/");
       }
     });
   };
@@ -48,20 +57,19 @@ const SignUp = () => {
       <select name="gender" value={formData.gender} onChange={handleChange} required>
         <option value="" disabled>Select Gender</option>
         <br></br>
-        <input type="number" name="age" placeholder="Age" value={formData.age} onChange={handleChange} required />
-        <br></br>
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="other">Other</option>
       </select>
       <br></br>
-     
+      <input type="number" name="age" placeholder="Age" value={formData.age} onChange={handleChange} required />
+      <br></br>
       <button type="submit" disabled={authStatus === 'loading'}>Sign Up</button>
    
     </form>
  
 
-<p>You already have an account? <Link to="/">Sign In</Link></p>
+<p>You already have an account? <Link to="/signin">Sign In</Link></p>
       {authError && <p>Error: {authError}</p>}
     </>
     

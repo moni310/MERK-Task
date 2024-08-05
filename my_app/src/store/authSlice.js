@@ -7,7 +7,7 @@ export const signUp = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/user/signup",
+        "http://localhost:4000/api/register",
         userData
       );
       console.log(response);
@@ -24,7 +24,7 @@ export const signIn = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/user/signin",
+        "http://localhost:4000/api/login",
         credentials
       );
       console.log(response);

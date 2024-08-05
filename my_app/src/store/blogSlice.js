@@ -7,7 +7,7 @@ export const createPost = createAsyncThunk(
   async (postData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/blogs/posts",
+        "http://localhost:4000/api/posts",
         postData,
         {
           headers: { Authorization: `${localStorage.getItem("token")}` },
@@ -24,7 +24,7 @@ export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:4000/blogs/posts");
+      const response = await axios.get("http://localhost:4000/api/posts");
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.response.data.message);
@@ -37,7 +37,7 @@ export const fetchPost = createAsyncThunk(
   async (postId, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/blogs/posts/${postId}`
+        `http://localhost:4000/api/posts/${postId}`
       );
       return response.data.data;
     } catch (error) {
@@ -51,7 +51,7 @@ export const updatePost = createAsyncThunk(
   async ({ postId, postData }, { rejectWithValue }) => {
     try {
       const response = await axios.put(
-        `http://localhost:4000/blogs/posts/${postId}`,
+        `http://localhost:4000/api/posts/${postId}`,
         postData,
         {
           headers: { Authorization: `${localStorage.getItem("token")}` },
@@ -69,7 +69,7 @@ export const deletePost = createAsyncThunk(
   async (postId, { rejectWithValue }) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/blogs/posts/${postId}`,
+        `http://localhost:4000/api/posts/${postId}`,
         {
           headers: { Authorization: `${localStorage.getItem("token")}` },
         }
